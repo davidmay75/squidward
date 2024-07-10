@@ -33,18 +33,14 @@
 
         <button type="submit" >search</button>
 
-        @if ($data)
-        @php
-            $decoded = json_decode($data);
-            $current = $decoded->current;
-            // dd($decoded);
-        @endphp
+        @if ($data ?? false)
+            @php
+                $current = [];
+                $decoded = json_decode($data);
+                $current = $decoded->current;
+            @endphp
 
         @foreach ($current as $key => $value)
-            
-        @php
-            // dd($key , $value);
-        @endphp
             <p>{{$key}} </p> <p>{{$value}} </p> </br>
         @endforeach
      
